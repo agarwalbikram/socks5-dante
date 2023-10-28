@@ -13,19 +13,28 @@ sudo apt install dante-server -y
 
 # Create the configuration file
 sudo bash -c 'cat <<EOF > /etc/danted.conf
-logoutput: /var/log/danted.log
-internal: 0.0.0.0 port = 1080
-external: eth0
-method: username none
+logoutput: syslog
 user.privileged: root
-user.notprivileged: nobody
+user.unprivileged: nobody
+
+# The listening network interface or address.
+internal: 0.0.0.0 port=1080
+
+# The proxying network interface or address.
+external: eth0
+
+# socks-rules determine what is proxied through the external interface.
+socksmethod: username
+
+# client-rules determine who can connect to the internal interface.
+clientmethod: none
+
 client pass {
     from: 0.0.0.0/0 to: 0.0.0.0/0
-    log: connect disconnect error
 }
+
 socks pass {
     from: 0.0.0.0/0 to: 0.0.0.0/0
-    log: connect disconnect error
 }
 EOF'
 
