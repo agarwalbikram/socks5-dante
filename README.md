@@ -10,7 +10,7 @@ This repository contains a script that helps you to setup a SOCKS5 proxy server 
 ## Installation
 Run the script
 ```bash
-wget https://raw.githubusercontent.com/saaiful/socks5/main/socks5.sh
+wget https://raw.githubusercontent.com/agarwalbikram/socks5-dante/main/socks5.sh
 sudo bash socks5.sh
 ```
 
